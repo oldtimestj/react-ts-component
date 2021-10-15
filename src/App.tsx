@@ -1,12 +1,23 @@
+/*
+ * @Description: 
+ * @version: 
+ * @Author: tjwang
+ * @Date: 2021-10-11 08:42:32
+ * @LastEditors: tjwang
+ * @LastEditTime: 2021-10-15 08:38:42
+ */
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Button, {ButtonType, ButtonSize} from './components/Button/button';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <Button disabled>Disabled Button</Button>
+        <Button btnType={ButtonType.Primary} size={ButtonSize.Large}>Large Button</Button>
+        <Button btnType={ButtonType.Primary} size={ButtonSize.Small}>Small Button</Button>
+        <Button btnType={ButtonType.Danger} size={ButtonSize.Small}>Small Danger</Button>
+        <Button btnType={ButtonType.Link} href="http://www.baidu.com">Baidu Link</Button>
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>

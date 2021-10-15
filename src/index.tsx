@@ -1,6 +1,14 @@
+/*
+ * @Description: 
+ * @version: 
+ * @Author: tjwang
+ * @Date: 2021-10-11 08:42:32
+ * @LastEditors: tjwang
+ * @LastEditTime: 2021-10-13 08:58:11
+ */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './styles/index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
