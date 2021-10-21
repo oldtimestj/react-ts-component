@@ -4,9 +4,9 @@
  * @Author: tjwang
  * @Date: 2021-10-14 08:46:10
  * @LastEditors: tjwang
- * @LastEditTime: 2021-10-14 09:18:02
+ * @LastEditTime: 2021-10-20 09:14:41
  */
-import React from "react";
+import React, {FC, ButtonHTMLAttributes, AnchorHTMLAttributes} from "react";
 import classNames from "classnames";
 
 export enum ButtonSize {
@@ -17,33 +17,39 @@ export enum ButtonSize {
 export enum ButtonType {
   Primary = 'primary',
   Default = 'default',
-  Danger = 'Danger',
-  Link = 'Link'
+  Danger = 'danger',
+  Link = 'link'
 }
 
 interface BaseButtonProps {
   className?: string;
+  /**设置 Button 的禁用 */
   disabled?: boolean;
+  /**设置 Button 的尺寸 */
   size?: ButtonSize;
+  /**设置 Button 的类型 */
   btnType?: ButtonType;
   children: React.ReactNode;
   href?: string;
 }
-
-const Button: React.FC<BaseButtonProps> = (props) => {
+type NativeButtonProps = BaseButtonProps & ButtonHTMLAttributes<HTMLElement>
+type AnchorButtonProps = BaseButtonProps & AnchorHTMLAttributes<HTMLElement>
+export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>
+const Button: FC<ButtonProps> = (props) => {
   const {
     btnType,
+    className,
     disabled,
     size,
     children,
     href,
   } = props;
-  const classes = classNames('btn', {
+  const classes = classNames('btn', className,{
     [`btn-${btnType}`]: btnType,
     [`btn-${size}`]: size,
     'disabled': (btnType === ButtonType.Link) && disabled,
   })
-  if(btnType === ButtonType.Link && href) {
+  if(btnType === 'link' && href) {
     return (
       <a href={href} className={classes}>
         {children}
